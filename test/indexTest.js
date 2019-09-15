@@ -6,18 +6,19 @@ describe('index.js', function () {
     drivers.length = 0;
 
     drivers.push(
-      { name: 'Sally',   revenue: 400 },
+      { name: 'Sally', revenue: 400 },
       { name: 'Annette', revenue: 200 },
-      { name: 'Jim',     revenue: 150 }
+      { name: 'Jim', revenue: 150 }
     );
 
     extendedDrivers.length = 0;
 
     extendedDrivers.push(
-      { name: 'Sally',   revenue: 400 },
+      { name: 'Sally', revenue: 400 },
       { name: 'Annette', revenue: 200 },
-      { name: 'Jim',     revenue: 150 },
-     );
+      { name: 'Jim', revenue: 150 },
+      { name: 'Sally', revenue: 200 }
+    );
   });
 
   describe('driversWithRevenueOver()', function () {
@@ -27,7 +28,7 @@ describe('index.js', function () {
       ]);
 
       expect(driversWithRevenueOver(drivers, 199)).to.eql([
-        { name: 'Sally',   revenue: 400 },
+        { name: 'Sally', revenue: 400 },
         { name: 'Annette', revenue: 200 }
       ]);
     });
@@ -39,7 +40,7 @@ describe('index.js', function () {
 
   describe('driverNamesWithRevenueOver()', function () {
     it('returns an array of all matching drivers names as string', function () {
-      expect(driverNamesWithRevenueOver(drivers, 199)).to.eql([ 'Sally', 'Annette' ]);
+      expect(driverNamesWithRevenueOver(drivers, 199)).to.eql(['Sally', 'Annette']);
     });
 
     it('returns an empty array if there is no match', function () {
@@ -56,7 +57,7 @@ describe('index.js', function () {
 
       expect(exactMatch(extendedDrivers, { revenue: 200 })).to.eql([
         { name: 'Annette', revenue: 200 },
-        { name: 'Sally',   revenue: 200 }
+        { name: 'Sally', revenue: 200 }
       ]);
     });
 
@@ -69,9 +70,9 @@ describe('index.js', function () {
 
   describe('exactMatchToList()', function () {
     it('returns an array of names for all matching drivers', function () {
-      expect(exactMatchToList(extendedDrivers, { name: 'Sally' })).to.eql([ 'Sally', 'Sally' ]);
+      expect(exactMatchToList(extendedDrivers, { name: 'Sally' })).to.eql(['Sally', 'Sally']);
 
-      expect(exactMatchToList(extendedDrivers, { revenue: 200 })).to.eql([ 'Annette', 'Sally' ]);
+      expect(exactMatchToList(extendedDrivers, { revenue: 200 })).to.eql(['Annette', 'Sally']);
     });
 
     it('returns an empty array if there is no match', function () {
